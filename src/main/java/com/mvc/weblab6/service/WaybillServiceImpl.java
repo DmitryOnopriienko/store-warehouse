@@ -1,7 +1,6 @@
 package com.mvc.weblab6.service;
 
 import com.mvc.weblab6.entity.Waybill;
-import com.mvc.weblab6.entity.WaybillProduct;
 import com.mvc.weblab6.exception.NotFoundException;
 import com.mvc.weblab6.repository.WaybillRepository;
 import org.springframework.beans.factory.annotation.Autowired;
