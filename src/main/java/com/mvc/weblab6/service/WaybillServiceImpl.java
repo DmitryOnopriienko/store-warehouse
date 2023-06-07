@@ -29,16 +29,4 @@ public class WaybillServiceImpl implements WaybillService {
     return waybillRepository.findById(id).orElseThrow(() ->
             new NotFoundException("Waybill %d not found".formatted(id)));
   }
-
-  @Override
-  public double countTotalPrice(int id) {
-    Waybill waybill = waybillRepository.findById(id).orElseThrow(() ->
-            new NotFoundException("Waybill %d not found".formatted(id)));
-    double totalPrice = 0;
-    for (int i = 0; i < waybill.getProducts().size(); i++) {
-      WaybillProduct waybillProduct = waybill.getProducts().get(i);
-      totalPrice += waybillProduct.getProduct().getPrice() * waybillProduct.getQuantity();
-    }
-    return totalPrice;
-  }
 }

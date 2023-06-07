@@ -8,6 +8,4 @@ public interface WaybillService {
   List<Waybill> getAllWaybills();
 
   Waybill getById(int id);
-
-  double countTotalPrice(int id);
 }
