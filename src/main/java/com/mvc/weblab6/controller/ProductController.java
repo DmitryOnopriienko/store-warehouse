@@ -1,6 +1,5 @@
 package com.mvc.weblab6.controller;
 
-import com.mvc.weblab6.entity.Product;
 import com.mvc.weblab6.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
