@@ -4,14 +4,15 @@ import com.mvc.weblab6.entity.Customer;
 import com.mvc.weblab6.entity.Waybill;
 import com.mvc.weblab6.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-@RestController
+@Controller
 @RequestMapping("/customers")
 public class CustomerController {
 
@@ -23,17 +24,15 @@ public class CustomerController {
   }
 
   @GetMapping
-  public List<Customer> getAllCustomers() {
-    return customerService.getAllCustomers();
+  public String getAllCustomers(Model model) {
+    model.addAttribute("customers", customerService.getAllCustomers());
+    return "customers";
   }
 
   @GetMapping("/{id}")
-  public Customer getById(@PathVariable int id) {
-    return customerService.getById(id);
-  }
-
-  @GetMapping("/{id}/waybills")
-  public List<Waybill> getWaybillsByCustomerId(@PathVariable int id) {
-    return customerService.getWaybillsByCustomerId(id);
+  public String getById(@PathVariable int id, Model model) {
+    model.addAttribute("customer", customerService.getById(id));
+    model.addAttribute("waybills", customerService.getWaybillsByCustomerId(id));
+    return "customer-info";
   }
 }

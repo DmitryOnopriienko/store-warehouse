@@ -11,8 +11,10 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.util.List;
@@ -36,4 +38,13 @@ public class Waybill {
   @OneToMany(mappedBy = "waybill")
   @JsonManagedReference
   private List<WaybillProduct> products;
+
+  @Transient
+  private double totalPrice;
+
+  public double getTotalPrice() {
+    return products.stream()
+            .mapToDouble(x -> x.getProduct().getPrice() * x.getQuantity())
+            .sum();
+  }
 }

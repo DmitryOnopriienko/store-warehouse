@@ -26,6 +26,7 @@
     </tbody>
   </table>
   <hr>
-  <div th:text="'Усього: $'+${totalPrice}"></div>
+  <div th:text="'Усього: $'+${waybill.totalPrice}"></div>
+  <div><a th:href="@{/waybills}">Всі накладні</a></div>
 </body>
 </html>

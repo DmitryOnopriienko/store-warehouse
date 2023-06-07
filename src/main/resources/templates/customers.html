@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Клієнти</title>
+</head>
+<body>
+<table border="1">
+  <thead>
+  <tr>
+    <td>ID</td>
+    <td>Ім'я</td>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="customer : ${customers}">
+    <td><a th:text="${customer.id}" th:href="@{/customers/{id}(id=${customer.id})}"></a></td>
+    <td><a th:text="${customer.name+' '+customer.surname}" th:href="@{/customers/{id}(id=${customer.id})}"></a></td>
+  </tr>
+  </tbody>
+</table>
+</body>
+</html>

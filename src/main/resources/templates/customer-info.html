@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title th:text="'Клієнт №'+${customer.id}">Title</title>
+</head>
+<body>
+	<h1 th:text="'Клієнт №'+${customer.id}">Клієнт</h1>
+	<p th:text="'Ім\'я: '+${customer.name}"></p>
+	<p th:text="'Прізвище: '+${customer.surname}"></p>
+	<p th:text="'Email: '+${customer.email}"></p>
+	<div>
+		<h2>Накладні клієнта</h2>
+		<table border="1">
+			<thead>
+				<tr>
+					<td>ID</td>
+					<td>Сума</td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="waybill : ${customer.waybills}">
+					<td><a th:text="${waybill.id}" th:href="@{/waybills/{id}(id=${waybill.id})}"></a></td>
+					<td th:text="${waybill.totalPrice}"></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<hr>
+	<p><a th:href="@{/customers}">Всі клієнти</a></p>
+</body>
+</html>

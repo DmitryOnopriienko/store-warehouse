@@ -1,6 +1,5 @@
 package com.mvc.weblab6.controller;
 
-import com.mvc.weblab6.entity.Waybill;
 import com.mvc.weblab6.service.WaybillService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -29,7 +28,6 @@ public class WaybillController {
   @GetMapping("/{id}")
   public String getWaybillById(@PathVariable int id, Model model) {
     model.addAttribute("waybill", waybillService.getById(id));
-    model.addAttribute("totalPrice", waybillService.countTotalPrice(id));
     return "waybill-info";
   }
 }
