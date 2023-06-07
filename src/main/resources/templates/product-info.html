@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title th:text="${product.name}">Title</title>
+</head>
+<body>
+	<h1 th:text="${product.name}">Title</h1>
+	<p th:text="'ID: '+${product.id}">ID</p>
+	<p th:text="'Ціна: $'+${product.price}">Price</p>
+	<hr>
+	<p><a th:href="@{/products}">До усіх товарів</a></p>
+</body>
+</html>

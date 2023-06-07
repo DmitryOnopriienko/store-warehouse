@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Товари</title>
+</head>
+<body>
+	<h1>Товари</h1>
+	<table border="1">
+		<thead>
+			<tr>
+				<td>ID</td>
+				<td>Назва</td>
+				<td>Ціна</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="product : ${products}">
+				<td><a th:text="${product.id}" th:href="@{/products/{id}(id=${product.id})}"></a></td>
+				<td><a th:text="${product.name}" th:href="@{/products/{id}(id=${product.id})}"></a></td>
+				<td th:text="${product.price}"></td>
+			</tr>
+		</tbody>
+	</table>
+	<hr>
+	<p><a th:href="@{/}">На головну</a></p>
+</body>
+</html>
