@@ -1,6 +1,7 @@
 package com.mvc.weblab6.controller;
 
 import com.mvc.weblab6.entity.Customer;
+import com.mvc.weblab6.entity.Waybill;
 import com.mvc.weblab6.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/customers")
+@RequestMapping("/customers")
 public class CustomerController {
 
   private final CustomerService customerService;
@@ -29,5 +30,10 @@ public class CustomerController {
   @GetMapping("/{id}")
   public Customer getById(@PathVariable int id) {
     return customerService.getById(id);
+  }
+
+  @GetMapping("/{id}/waybills")
+  public List<Waybill> getWaybillsByCustomerId(@PathVariable int id) {
+    return customerService.getWaybillsByCustomerId(id);
   }
 }

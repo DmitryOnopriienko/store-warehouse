@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title th:text="'Накладна №'+waybill.id"></title>
+</head>
+<body>
+  <div th:text="'Накладна №'+${waybill.id}"></div>
+  <div><a th:text="'Клієнт: '+${waybill.customer.name+' '+waybill.customer.surname}" th:href="@{/customers/{id}(id=${waybill.customer.id})}"></a></div>
+  <table border="1">
+    <thead>
+      <tr>
+        <td>ID товару</td>
+        <td>Назва</td>
+        <td>Ціна</td>
+        <td>Кількість</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr th:each="product : ${waybill.products}">
+        <td><a th:text="${product.product.id}" th:href="@{/products/{id}(id=${product.product.id})}"></a></td>
+        <td><a th:text="${product.product.name}" th:href="@{/products/{id}(id=${product.product.id})}"></a></td>
+        <td th:text="${product.product.price}"></td>
+        <td th:text="${product.quantity}"></td>
+      </tr>
+    </tbody>
+  </table>
+  <hr>
+  <div th:text="'Усього: $'+${totalPrice}"></div>
+</body>
+</html>

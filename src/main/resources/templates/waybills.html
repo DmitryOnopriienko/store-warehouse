@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Накладні</title>
+</head>
+<body>
+<table border="1">
+	<thead>
+		<tr>
+			<td>ID</td>
+			<td>Клієнт</td>
+		</tr>
+	</thead>
+	<tbody>
+		<tr th:each="waybill : ${waybills}">
+			<td><a th:text="${waybill.id}" th:href="@{/waybills/{id}(id=${waybill.id})}"></a></td>
+			<td><a th:text="${waybill.customer.name+' '+waybill.customer.surname}" th:href="@{/customers/{id}(id=${waybill.customer.id})}"></a></td>
+		</tr>
+	</tbody>
+</table>
+</body>
+</html>

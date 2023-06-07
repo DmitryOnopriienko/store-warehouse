@@ -1,6 +1,7 @@
 package com.mvc.weblab6.service;
 
 import com.mvc.weblab6.entity.Customer;
+import com.mvc.weblab6.entity.Waybill;
 import com.mvc.weblab6.exception.NotFoundException;
 import com.mvc.weblab6.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,5 +28,12 @@ public class CustomerServiceImpl implements CustomerService {
   public Customer getById(int id) {
     return customerRepository.findById(id).orElseThrow(() ->
             new NotFoundException("Customer %d not found".formatted(id)));
+  }
+
+  @Override
+  public List<Waybill> getWaybillsByCustomerId(int id) {
+    return customerRepository.findById(id)
+            .orElseThrow(() -> new NotFoundException("Customer %d not found".formatted(id)))
+            .getWaybills();
   }
 }
