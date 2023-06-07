@@ -51,4 +51,7 @@ VALUES (1), (1), (2);
 INSERT INTO waybill_has_products (waybill_id, product_id, quantity)
 VALUES (1, 1, 3),
        (1, 2, 5),
-       (1, 3, 10);
+       (1, 3, 10),
+       (2, 1, 1),
+       (2, 2, 2),
+       (3, 3, 1);
